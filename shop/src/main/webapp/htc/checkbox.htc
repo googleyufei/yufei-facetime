@@ -1,0 +1,187 @@
+// 描述 ：    CheckBox样式
+// 版本 ：    1.0
+// 作者 ：    ArcoKe
+// 最新更新： 2004-10-29
+// 备注 ：
+
+<PUBLIC:COMPONENT>
+	<PUBLIC:ATTACH EVENT="oncontentready" ONEVENT="fnInit()"/>
+	<PUBLIC:ATTACH EVENT="onpropertychange"         ONEVENT="fnPropertychange()" />
+	<PUBLIC:ATTACH EVENT="onselectstart"            ONEVENT="fnCancel()" />
+	<PUBLIC:PROPERTY NAME="myValue"/>
+
+	<SCRIPT LANGUAGE="JScript">
+	var checkBoxImg = window.document.createElement("IMG");
+	checkBoxImg.width=16;
+	checkBoxImg.height=16;
+	checkBoxImg.className="checkBoxImg";
+	/****************************************************
+	初始化复选框
+	****************************************************/
+	function fnInit()
+	{
+	    var input=element;
+
+	    if(input.className == "MyCheckBox" && input.type == "checkbox")
+	    {
+		var _table = window.document.createElement("TABLE");
+                //_table.mergeAttributes(input);
+
+		_table.cellSpacing = 0;
+		_table.cellPadding = 0;
+		_table.border = 0;
+		_table.className ="CheckBoxTable";
+		if(input.disabled){
+		  _table.style.cursor="auto";
+		  _table.style.filter="progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=40,finishOpacity=40);";
+		}
+		else{
+		  _table.style.cursor="Hand";
+		  _table.style.filter="";
+		}
+		_table.style.display = "inline";
+
+		var _tr = _table.insertRow();
+		var _td= _tr.insertCell();
+		_td.width=19;
+		_td.height=19;
+		if (input.checked)
+		{
+		   checkBoxImg.src="/shop/images/htc/select_01.jpg";
+		}
+		else{
+		   checkBoxImg.src="/shop/images/htc/noselect_01.jpg";
+		}
+		_td.appendChild(checkBoxImg);
+
+		
+                _td= _tr.insertCell();
+		_td.style.verticalAlign="bottom";
+		var _vtable = window.document.createElement("TABLE");
+		_vtable.cellSpacing = 0;
+		_vtable.cellPadding = 0;
+		_vtable.border = 0;
+		_vtable.width = "100%";
+		_vtable.height = "100%";
+
+		var _vtr = _vtable.insertRow();
+
+
+		if (input.myValue)
+		{
+		  var _vtd=_vtr.insertCell();
+		  
+		  if(input.disabled){
+		    _vtd.className="checkBoxDisable";
+		    _vtd.style.verticalAlign="bottom";//middle
+		  }
+		  else{
+		    _vtd.className="txtNoSel";
+		    _vtd.style.verticalAlign="bottom";
+		  }
+		  _vtd.innerHTML="&nbsp"+input.myValue;
+		  
+		}	
+
+                _table.value=_vtd;
+		_td.appendChild(_vtable);
+
+                input.parentElement.insertBefore(_table, input);
+		
+		input.MyCheckBox =_table;
+
+		 _table.attachEvent("onclick", function(){input.click();fnClick();});
+		 _table.attachEvent("onmouseover", function(){fnOver()});
+		 _table.attachEvent("onmouseout", function(){fnOut()});
+		
+		 input.style.display = "none";
+	
+	    }
+	}
+
+	function fnClick()
+	{
+		var obj=element;
+		if (obj.className == "MyCheckBox" && obj.type == "checkbox")
+		{
+
+		  if (obj.checked)
+		  {
+		     checkBoxImg.src="/shop/images/htc/select_01.jpg";
+		  }
+		  else{
+		     checkBoxImg.src="/shop/images/htc/noselect_01.jpg";
+		  }
+		}
+	}
+
+	function fnOver()
+	{
+		var obj=element;
+		if (obj.className == "MyCheckBox" && obj.type == "checkbox")
+		{
+		  if (obj.disabled)
+		  {
+		     return false;
+		  }
+		  if (obj.checked)
+		  {
+		     checkBoxImg.src="/shop/images/htc/select_02.jpg";
+		  }
+		  else{
+		     checkBoxImg.src="/shop/images/htc/noselect_02.jpg";
+		  }
+		}
+	}
+
+	function fnOut()
+	{
+		var obj=element;
+		if (obj.className == "MyCheckBox" && obj.type == "checkbox")
+		{
+		  if (obj.disabled)
+		  {
+		     return false;
+		  }
+		  if (obj.checked)
+		  {
+		     checkBoxImg.src="/shop/images/htc/select_01.jpg";
+		  }
+		  else{
+		     checkBoxImg.src="/shop/images/htc/noselect_01.jpg";
+		  }
+		}
+	}
+
+		function fnPropertychange(){
+			var obj = event.srcElement;
+			//alert(obj.MyCheckBox.disabled);
+			//alert(event.propertyName.toString().toLowerCase());
+			switch(event.propertyName.toString().toLowerCase()) {
+				case "myvalue":Value(obj);break;
+				case "disabled":Disabled(obj);break;
+			}
+		}
+		function Value(obj){
+			obj.MyCheckBox.value.innerHTML = "&nbsp"+obj.myValue;
+		}
+		function Disabled(obj){
+		        alert(obj.disabled);
+			if(!obj.disabled){
+			   obj.MyCheckBox.style.filter="";
+			   obj.MyCheckBox.style.cursor="Hand";
+			   obj.MyCheckBox.value.style.cursor="Hand";
+//			}
+//			else{
+//			   obj.MyCheckBox.style.filter="progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=40,finishOpacity=40);";
+//			   obj.MyCheckBox.style.cursor="default";
+//			   obj.MyCheckBox.value.style.cursor="auto";
+			}
+		}
+
+    function fnCancel()
+    {
+        window.event.returnValue = false;
+    }
+	</SCRIPT>
+</PUBLIC:COMPONET>

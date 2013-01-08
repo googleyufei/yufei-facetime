@@ -1,0 +1,117 @@
+// 描述 ：      Input控件
+// 版本 ：      1.0
+// 作者 ：      ArcoKe
+// 最新更新：   2004-10-30
+// 备注 ：
+
+<PUBLIC:COMPONENT>
+<PUBLIC:ATTACH EVENT="oncontentready" ONEVENT="fnInit()"/>
+<PUBLIC:ATTACH EVENT="onpropertychange" ONEVENT="fnPropertychange()" />
+<PUBLIC:PROPERTY NAME="isSel"/>
+<PUBLIC:PROPERTY NAME="isDate"/>
+<PUBLIC:PROPERTY NAME="doFun"/>
+
+
+<SCRIPT	language="javascript">
+  var _span = window.document.createElement("SPAN");
+  _span.style.border="1px solid #dddddd";
+  _span.style.height="21";
+  var _input = window.document.createElement("input");
+  _input.style.border="1px none #ffffff";
+  
+
+function fnInit(){
+
+   var input= element;
+   switch(input.type)
+   {
+	case "text":
+		_input.type="text";
+		break;
+	case "password":
+		_input.type="password";
+		_input.style.color="#009900";
+		break;
+   }
+   if(input.className == "MyInput" && (input.type == "text" || input.type == "password")){
+   {
+
+        input.style.display="none";
+	input.insertAdjacentElement("afterEnd",_span);
+
+	_input.size=input.size;
+	_input.value=input.value;
+	_input.disabled=input.disabled;
+	_span.appendChild(_input);
+
+
+	if(isSel=="true"){
+		var _img = window.document.createElement("IMG");
+		_img.weight="20px";
+		_img.height="20px";
+		_img.align="absmiddle";
+		
+		if (!_input.disabled){
+		if(isDate=="true"){
+		_img.src="/shop/images/htc/calendar.gif";
+		}
+		else{
+		_img.src="/shop/images/htc/sel.gif";
+		}
+		_img.style.cursor="hand";
+		}
+		else{
+		_img.src="/shop/images/htc/nosel.gif";
+		_img.style.cursor="auto";
+		_input.style.backgroundColor="#f2f2f2";
+		}
+		_span.appendChild(_img);
+		_img.attachEvent("onclick",function(){imgClick();});
+	}
+	//alert(input.parentElement.innerHTML);
+	_input.attachEvent("onfocus", function(){fnFocus();});
+	_input.attachEvent("onblur", function(){fnBlur();});
+	input.value=_input.value;
+	input.MyInput=_span;
+	
+   }
+ }
+}
+
+function fnFocus(){
+	_span.style.border="1px solid #0099cc";
+
+}
+function fnBlur(){
+	var obj = element;
+	_span.style.border="1px solid #dddddd";
+       obj.value=_input.value;
+}
+
+function imgClick(){
+	if(this.doFun!="" && !this.disabled){
+		eval(this.doFun);//请求函数
+	}
+}
+
+
+function fnPropertychange(){
+	var obj = event.srcElement;
+	switch(event.propertyName.toString().toLowerCase()) {
+		case "value":Value(obj);break;
+		//case "disabled":Disabled(obj);break;
+	}
+}
+function Value(obj){
+	_input.value= obj.value;
+}
+
+//function Disabled(obj){
+//	alert(obj.disabled);
+//	if(obj.disabled){
+//	  _input.style.backgroundcolor="#f2f2f2";
+//	}
+//}
+
+</SCRIPT>
+</PUBLIC:COMPONENT>

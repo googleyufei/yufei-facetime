@@ -1,0 +1,198 @@
+=================2011.06.21====================
+1: 在Eclipse的Find/Replace 使用正则匹配:<html:rewrite action="/(.+)"/> ==> /shop/$1.do
+
+2: new QueryResult<Brand>(brandList, count)
+
+3: 在XCode中, 一旦你设置了breadpoint, 有些时候你不能通过在Editor中Delete breakpoint来去除, 而要通过Reaval in debugger view 中 Delete.
+
+4: 好搞笑, 我把facetime.jar最新包复制到另My_Library/shop_libr里, 而在程序中却一直在用My_Libaray/All_libr, 可笑的是我居然怀疑ANT或者Eclipse有BUG, 事实上不过是因为自己太追求速度了.只要把最新的包拷贝到My_Libarary/shop_libr,然后刷新Ecilpse项目就可以了.
+
+5: 在ProductTypeSelect.jsp 中<c:forEach var="type" items="${types}"  varStatus="loop">  使用后报错: Don't know how to iterate over supplied "items" in &lt;forEach&gt, 我仔细研究了下, 发现是因为request.setAttribute("types",  productTypeLogic.getProductTypes(bean, null)设置的是QueryResult,当然不能迭代了.
+
+6: 网站性能测试工具, 性能分析工具.性能瓶颈分析工具
+7: JAVA内存模型
+
+===================2011.06.22=====================
+1: Excel使用: 单击行和列结合的部位,选中了全部的Cell, 右键点击在出现的快捷菜单中选择'Format Cells' -> 
+'Alignment', 将修改:{Horizontal:Left(Indent), Vertical:Top, Indent:0,Wrap text:checked, Text direction:Context}
+此时, 所有的Cells都可以插入多行文本.
+2: Excel Row height设置: 在行和列的结合部单击选中全部的行, 右键点击, 在出现的快捷菜单中选择'Row height' ->40.
+同理可以设置'Column width'.
+3: springmvc实现文件上传功能:
+A. 在/WEB-INF/springmvc-servlet.xml中配置:
+<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
+ <!-- 以字节为单位的最大上传文件的大小 -->
+ <property name="maxUploadSize" value="100000" />
+</bean>
+B. 确保已经导入了commons-io.jar+commons-fileupload.jar
+C. 创建一个controller（控制器）来处理文件上传请求，FileUploadController.java：
+@Controller //声明该类为控制器类
+public class FileUploadController implements ServletContextAware{ //实现ServletContextAware接口，获取本地路径
+private ServletContext servletContext;
+public void setServletContext(ServletContext servletContext) { //实现接口中的setServletContext方法
+this.servletContext = servletContext;
+}
+@RequestMapping(value = "/upload", method = RequestMethod.POST) //将文件上传请求映射到该方法
+public String handleFormUpload(@RequestParam("name") String name, //设置请求参数的名称和类型
+@RequestParam("file") CommonsMultipartFile mFile) { //请求参数一定要与form中的参数名对应
+if (!mFile.isEmpty()) {
+String path = this.servletContext.getRealPath("/tmp/"); //获取本地存储路径
+File file = new File(path + new Date().getTime() + ".jpg"); //新建一个文件
+try {
+mFile.getFileItem().write(file); //将上传的文件写入新建的文件中
+} catch (Exception e) {
+e.printStackTrace();
+}
+return "redirect:uploadSuccess";//返回成功视图
+ }else {
+return "redirect:uploadFailure"; //返回失败视图
+}
+D. 一开始尝试时报错:Required org.springframework.web.multipart.commons.CommonsMultipartFile parameter 'file' is not present
+经过测试, 不是因为 1)新建了一个UploadBean, 2)也不是因为commons-fileupload.jar/commons-io.jar不对, 3)更不是spring-webmvc-portlet.jar对结果没有一点影响,原来是因为
+<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 这个bean没有给它设置
+id='multipartResolver'导致的,注意这个id值是固定的, 你不能叫其他名字.至于maxUploadSize属性可以不设置.
+E. 注意: CommonsMultipartFile.getFileItem().getName()返回的才是文件的全名, 通过CommonsMultipartFile.getName()返回的知识form表单中的field属性名.
+
+4: 获取某个子路径在服务器中的绝对路径:request.getSession().getServletContext().getRealPath("/WEB-INF/page")
+5: 因为多加里')'导致一直检验不起作用:
+      if(trim(logofileVal) == "")){
+                alert("品牌图片不能为空!");
+                //form.logofile.focus();
+                return false;
+        }
+6: 一种不错的路径设置方式:<form action="/control/product/manage" enctype="multipart/form-data" method="post">
+<input type="hidden" name="method" value="edit">
+
+
+7: 正则表达式替换算法:{Find: \'<html:rewrite action="(.+)/manage"/>\?method=(.+)\', Replace with:'/shop$1/$2\.do'}
+8: velocity报错: org.apache.velocity.exception.ResourceNotFoundException: Unable to find resource
+   velocity使用指南, Velocity初始化过程解析, velocity用法简单实例说明  
+9: 转载: 
+最近写点东西,用到了VelocityEngine这个类,调用其getTemplate方法时,里面的路径设置一直有问题
+VelocityEngine ve = new VelocityEngine();
+ve.init();
+Template t = ve.getTemplate(fileName);
+实验多次后发现上面的fileName必须是直接位于项目目录下的路径,直接写绝对路径都不行
+例如:
+template   =   ve.getTemplate("welcome.vm");  
+welcome.vm放到你的项目根目录，也就是x:/tomcat/webapps/yourProject/welcome.vm  
+
+如果是：  
+
+template   =   ve.getTemplate("abc/welcome.vm");  
+welcome.vm放到你的项目的位置是x:/tomcat/webapps/yourProject/abc/welcome.vm  
+
+但是这样一来,有些人的本地开发和服务器测试时,模板文件的位置就不太一样,就会出现路径不对而throw出org.apache.velocity.exception.ResourceNotFoundException异常
+后来又实验了半天,终于发现以下方法可以解决问题,可以用绝对路径来配置,我这里是动态获取路径
+我的模板文件是放在资源目录的 "template" 目录下,但把项目发布到solaris系统的websphere上路径就很乱了,所以动态获取路径可以解决
+String fileDir = 我的类名.class.getResource("/template").getPath();
+VelocityEngine ve = new VelocityEngine();
+Properties properties = new Properties();
+properties.setProperty(ve.FILE_RESOURCE_LOADER_PATH, fileDir); //此处的fileDir可以直接用绝对路径来
+
+//指定,如"D:/template",但记住只要指定到文件夹就行了
+
+ve.init(properties);   //初始化
+
+Template t = ve.getTemplate("welcome.vm");//此处只要指明文件名就可以了.
+
+============================2011.06.23=================================
+
+1:BUG: List<String[]> records = this.findPart(
+                                UploadFile.class,
+                                new ReturnProperty(new String[] { "filepath" }),
+                                new QueryFilter("id", PMLO.IN, uploadFileIds));
+                List<String> filePaths = new ArrayList<String>();
+                for (String[] record : records) {
+                        filePaths.add(record[0]);
+                } 
+=> java.lang.ClassCastException: java.lang.String cannot be cast to [Ljava.lang.String;
+at com.shop.logic.fileupload.UploadFileLogicImpl.getFilepath(UploadFileLogicImpl.java:54)
+=> 输入日志: file path:[/images/uploadfile/2011/06/23/09/8f69a3db-0702-45e3-bfef-f3dc1fba165c.GIF, /images/uploadfile/2011/06/23/09/269d5d9a-1e2d-4d70-9da8-886f1d48a407.GIF]
+=> 而我却主观上判断它是因为在UploadfileBean中的String[] fileids而和uploadfilelist.jsp中的Checkbox属性不匹配导致的,
+因为方向性错误, 我发了1个多小时.
+
+结论:
+1) 当查询返回的属性只有一个时, 这时在ResultSet中的是单个的String,Object等等, 而不是[Ljava.lang.String; [Ljava.lang.Object;这样的数组类型.
+2) 当查询的列在2个以上时, 返回的是数组类型.更据返回的属性的不同会体现不同的类型, 如果有2个的属性类型是不一致的, 那么返回的就是Object数组[Ljava.lang.Object;
+
+2: @Transactional(readOnly = true, propagation = Propagation.NOT_SUPPORTED)
+        public List<String> getFilepath(String[] uploadFileIds)导致测试用例public void testGetFilepathByStringArray()一直失败, 经过比对, 我发现是因为在业务方法上加了@Transaction(....)导致save()方法没有在这个事物中执行, 出现了问题.
+3: filter>
+                <filter-name>employeeFilter</filter-name>
+                <filter-class>com.shop.web.filter.PrivilegeFilter</filter-class>
+        </filter>
+        <filter-mapping>
+                <filter-name>employeeFilter</filter-name>
+                <url-pattern>/shop/control/*</url-pattern>
+        </filter-mapping>
+此时的filter不起作用 ,要把<url-pattern>改为<url-pattern>/control/*</url-pattern>
+insert into t_employee(username,password,rakname,gender,idCard,email)values(
+'root','root','yufei','MAN','360423198804080638','google@gmail.com')
+
+4: 太妙了! 原来黎老师把Velocity的初始化放到了SetCodeFilter 里, 初始化的代码:
+Properties prop = new Properties();
+prop.put("runtime.log", config.getServletContext().getRealPath("/WEB-INF/log/velocity.log"));
+prop.put("file.resource.loader.path", config.getServletContext().getRealPath("/WEB-INF/vm"));
+prop.put("input.encoding", "UTF-8");
+prop.put("output.encoding", "UTF-8");
+Velocity.init(prop);
+==> 要好好学学Velocity工具.
+
+============================2011.06.24=================================
+1: spring框架并不是一个项目, 它是由多个项目组成的, 要好好研究它的组织结构和代码, 通过把每一个Spring的子项目导入到Eclipse中来看.
+2: 好好学习Spring的XML Scheme, 通过学习它的源码, 自己试着写一个权限的配置.
+3: 好帅的功能, 可以自定义类型转换器(Spring中叫做属性编辑器),方式有两种:
+1. 针对单个Controller的: 
+:直接在Controller中写如下方法, 并用@InitBinder注解, 记住要传入参数WebDataBinder
+@InitBinder
+public void initBinder(WebDataBinder binder) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                dateFormat.setLenient(false);
+                binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+}
+2.针对所有的Controller的全局Binder:
+:1) 写一个类, 实现了WebBindingInitializer
+public class MyBindingInitializer implements WebBindingInitializer {
+
+    public void initBinder(WebDataBinder binder, WebRequest request) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, 
+            new CustomDateEditor(dateFormat, false));
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(false));
+    }
+}
+:2) 在springmvc-servlet.xml中配置:
+<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+<property name="webBindingInitializer">
+        <bean class="com.baobaotao.web.MyBindingInitializer"/>
+</property>
+</bean>
+
+4: 要实时地获取一个BEAN, 可以通过如下步骤:
+1) 实现ApplicationContextAware接口, 重写setApplicationContext()方法, 获得ApplicationContext.
+2) 调用方法:BeanFactoryUtils.beanOfType(applicationContext, clazz); 而通过方法BeanFactoryUtils.beansOfTypeIncludingAncestors(getApplicationContext(), clazz):Map找到clazz类的全部实现类BEAN.
+
+5:Spring mvc中的拦截器实现
+实现步骤:
+1) 在springmvc-servlet.xml中配置:
+<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+        <property name="interceptors">
+                <list>
+                <bean class="com.shop.web.interceptor.PrivilegeRequestInterceptor" />
+                </list>
+        </property>
+</bean>
+
+2) 写一个类继承了HandlerInterceptorAdapter, 重写preHandler(),postHandler(),afterCompletion(). 其中preHanlder()是在Action执行之前, 而postHandler()是在Action执行之后, 通过afterCompletion()方法的exception参数可以判断当抛出异常时跳转到页面.
+3) 注意参数handler就是你执行的那个Controller对象. 通过反射可以操作它的一切.
+
+6: 谨记, 不能用MultipartFile替代CommonsMultipartFile, 当你这样定义getter方法时, 
+public MultipartFile getLogofile() {
+                return logofile;
+} , 还是不能上传文件, 系统会呈现出无声无息的.
+
+=======================2011.06.25==========================================================
+1:Socket bind failed: [730048]
+原因：Tomcat端口被占用，请打开Tomcat 5.5\conf\server.xml,将8080改成其他即可 

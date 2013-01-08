@@ -1,0 +1,228 @@
+.titletop_tabbody{
+	BORDER-RIGHT: gray 1px solid;
+	BORDER-BOTTOM: gray 1px solid;
+	BORDER-LEFT: gray 1px solid;
+	WIDTH: 100%;
+	HEIGHT: 100%;
+	font-size: 12px;
+}
+
+.calendar_table{
+
+}
+
+.jui_date_input{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	border: 1px solid #999999;
+    
+}
+
+.jui_date_button{
+	font-family: "marlett";
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+
+}
+
+.jui_button {
+	BORDER-RIGHT: darkgray 1px solid; BORDER-TOP: darkgray 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: darkgray 1px solid; CURSOR: hand; BORDER-BOTTOM: darkgray 1px solid; FONT-FAMILY: verdana; HEIGHT: 22px; BACKGROUND-COLOR: white
+}
+.jui_dropdown_box{
+    position: absolute;
+	filter:blendTrans(Duration=0.3);
+	background-color: #CCCCCC;
+	border-top: 2px solid #efefef;
+	border-right: 1px solid #666666;
+	border-bottom: 1px solid #666666;
+	border-left: 2px solid #efefef;
+}
+
+.jui_dropdown_content{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	background-color: #efefef;
+	vertical-align: bottom;
+	height: 20px;
+	CURSOR: hand;
+}
+
+.current_dropdown_row{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	background-color: #E3E3E3;
+	vertical-align: bottom;
+	height: 20px;
+	CURSOR: hand;
+}
+
+.selected_dropdown_row{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	background-color: #3399FF;
+	vertical-align: bottom;
+	height: 20px;
+	CURSOR: hand;
+	color: #FFFFFF;
+}
+
+.drop_down_content{
+	font-size: 12px;
+}
+
+.titlebot_tabbody{
+    BORDER-RIGHT: gray 1px solid;
+    BORDER-TOP: gray 1px solid;
+    BORDER-LEFT: gray 1px solid;
+    WIDTH: 100%; 
+    HEIGHT: 100%;
+	font-size: 12px;
+}
+
+.tab_title{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	PADDING-RIGHT: 6px;
+	PADDING-LEFT: 6px;
+	FONT-SIZE: 12px;
+	CURSOR: hand;
+	PADDING-TOP: 2px;
+	TEXT-ALIGN: center;
+	color: #000000;
+	text-decoration: none;
+}
+
+.tab_title_mouseover{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	PADDING-RIGHT: 6px;
+	PADDING-LEFT: 6px;
+	FONT-SIZE: 12px;
+	CURSOR: hand;
+	PADDING-TOP: 2px;
+	TEXT-ALIGN: center;
+	color: #0000FF;
+	text-decoration: underline;
+}
+
+.tab_title_mouseout{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	PADDING-RIGHT: 6px;
+	PADDING-LEFT: 6px;
+	FONT-SIZE: 12px;
+	CURSOR: hand;
+	PADDING-TOP: 2px;
+	TEXT-ALIGN: center;
+	color: #000000;
+	text-decoration: none;
+}
+
+.jui_checkbox{
+}
+
+.jui_input{
+	border: 1px solid #cccccc;
+	font-size: 12px;
+	font-family: "宋体", "新宋体";
+	padding-left: 5px;
+}
+
+.jui_original{
+	height: 1px;
+	width: 1px;
+}
+
+.jui_date_btn{
+	FONT-SIZE: 12px;
+	CURSOR: hand;
+	FONT-FAMILY: "marlett";
+	background-color: #efefef;
+	border: 1px solid #CCCCCC;
+}
+
+.jui_date_input{
+	font-family: "Geneva", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	background-color: #FFFFFF;
+	border: 1px solid #999999;
+	width: 50px;
+}
+
+.jui_btn{
+	position: absolute;
+	FONT-SIZE: 12px;
+	CURSOR: hand;
+	FONT-FAMILY: "marlett";
+	background-color: #E1DFFF;
+	border: 1px solid #CCCCCC;
+}
+
+.drop_down_box{
+	filter:blendTrans(Duration=0.3);
+	background-color: #e0e0e0;
+	border-top: 2px solid #efefef;
+	border-right: 2px solid #666666;
+	border-bottom: 2px solid #666666;
+	border-left: 2px solid #efefef;
+}
+
+.jui_input_active{
+	border: 1px solid #000000;
+	font-size: 12px;
+	font-family: "宋体", "新宋体";
+	background-color: #f5f5f5;
+}
+
+.jui_fieldset{
+	padding: 5px;
+	font-family: "宋体", "新宋体";
+	font-size: 12px;
+	border: 1px solid #666666;
+	margin: 1px;
+}
+.jui_fieldlabel{
+	font-family: "宋体", "新宋体";
+	font-size: 12px;
+	text-align: right;
+	vertical-align: middle;
+	width: 400px;
+}
+
+.jui_editorlabel{
+	font-family: "宋体", "新宋体";
+	font-size: 12px;
+	vertical-align: middle;
+}
+
+.jui_cur_cell{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	background-color: #FFFFFF;
+	text-align: center;
+	color: #000000;
+	margin: 2px;
+	padding: 2px;
+}
+.jui_pre_cell{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	background-color: #dddddd;
+	text-align: center;
+	color: #666666;
+	margin: 2px;
+	padding: 2px;
+}
+.jui_calendar_title{
+	font-family: "宋体", "新宋体";
+	color: #FFFFFF;
+	text-align: center;
+	vertical-align: middle;
+	background-color: #6666CC;
+	font-size: 12px;
+	margin: 3px;
+	padding: 3px;
+}
+.calendar_btn{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+
+}

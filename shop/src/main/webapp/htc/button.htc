@@ -1,0 +1,101 @@
+//  描述         : 按钮
+//  版本         : 1.0
+//  作者         : ArcoKe
+//  最新更新   : 2004-11-1
+//  备注         :
+<PUBLIC:COMPONENT>
+	<PUBLIC:ATTACH EVENT="oncontentready"   ONEVENT="fnInit()"   />
+	<PUBLIC:ATTACH EVENT="ondragstart"         ONEVENT="fnCancel()" />
+	<PUBLIC:ATTACH EVENT="onselectstart"         ONEVENT="fnCancel()" />
+	<PUBLIC:ATTACH EVENT="onpropertychange"         ONEVENT="fnPropertychange()" />
+  <PUBLIC:PROPERTY NAME="image"/>
+	<SCRIPT LANGUAGE="JScript">
+
+function fnInit(){
+
+var input = element;
+if (input.className == "MyButton")
+{
+	var _table = window.document.createElement("TABLE");
+	var icon = "";
+	_table.cellSpacing = 0;
+	_table.cellPadding = 0;
+	_table.border = 0;
+	_table.className = "ButtonTable";
+	_table.style.display = "inline";
+	var _tr = _table.insertRow();
+	var _td = _tr.insertCell();
+	_td.innerHTML = "<IMG SRC='/shop/images/htc/bt1.gif' WIDTH=2 HEIGHT=20 BORDER=0>";
+	_td = _tr.insertCell();
+	_td.className = "ButtonTable_td";
+	var _vtable = element.document.createElement("TABLE");
+	_vtable.cellSpacing = 0;
+	_vtable.cellPadding = 0;
+	_vtable.border = 0;
+	_vtable.width = "100%";
+	_vtable.height = "100%";
+	var _vtr = _vtable.insertRow();
+	_vtr.className = "ButtonValue";
+	if(!input.icon)
+		icon = "";
+	else
+		icon = input.icon;
+	var img = "&nbsp;"
+	if(icon != "") img += "<img src='"+icon+"' border=0 align='absbottom' hspace=2>";
+	_vtr.insertCell().innerHTML = img;
+	var _vtd = _vtr.insertCell();
+	if(input.disabled)
+		_vtd.className = "ButtonDisable";
+		if(image!=null){
+	    _vtd.innerHTML = "<IMG SRC="+input.image+" WIDTH=11 HEIGHT=11 BORDER=0>&nbsp;&nbsp;"+input.value;	
+		}
+		else{
+	    _vtd.innerHTML = "<IMG SRC='/shop/images/share/default.gif' WIDTH=11 HEIGHT=11 BORDER=0>&nbsp;&nbsp;"+input.value;	
+		}		
+	_table.value = _vtd;
+	var accessKeytext = "&nbsp;";
+	if(input.accessKey != ""){
+		accessKeytext = "(<U>" + input.accessKey + "</U>)&nbsp;" ;
+_table.accessKey = input.accessKey;
+	}
+	_vtr.insertCell().innerHTML = accessKeytext;
+	_td.appendChild(_vtable);
+	_td = _tr.insertCell();
+	_td.innerHTML = "<IMG SRC=/shop/images/htc/bt2.gif WIDTH=2 HEIGHT=20 BORDER=0>";
+	input.parentElement.insertBefore(_table, input);
+_table.attachEvent("onclick", function(){input.click()})
+_table.attachEvent("onselectstart", function(){return false;})
+	input.style.display = "none";
+	input.MyButton = _table;
+window.document.attachEvent("onkeydown", AccessKey)
+}
+}
+
+		function AccessKey(){
+				if(window.event.altKey && String.fromCharCode(event.keyCode) ==  element.accessKey){
+					element.click();
+				}
+		}
+
+		function fnPropertychange(){
+			var obj = event.srcElement;
+			switch(event.propertyName.toString().toLowerCase()) {
+			case "value":Value(obj);break;
+			case "disabled":Disabled(obj);break;
+			}
+		}
+		function Value(obj){
+			obj.MyButton.value.innerHTML = obj.value;
+		}
+		function Disabled(obj){
+			obj.disabled?obj.MyButton.value.className = "ButtonDisable" : obj.MyButton.value.className = "";
+		}
+		/*****************************************************
+		禁止拖动
+		*****************************************************/
+    function fnCancel()
+    {
+        window.event.returnValue = false;
+    }
+   </SCRIPT>
+   </PUBLIC:COMPONENT>

@@ -1,0 +1,79 @@
+body {
+SCROLLBAR-FACE-COLOR: #E5E6FF;
+SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #EFEFEF; SCROLLBAR-3DLIGHT-COLOR: #EFEFEF; SCROLLBAR-ARROW-COLOR: #330000; SCROLLBAR-TRACK-COLOR: #ffffff; SCROLLBAR-DARKSHADOW-COLOR: #ffffff;
+}
+TD {
+	FONT-SIZE: 12px; LINE-HEIGHT: normal
+}
+
+A {
+	COLOR: #0000FF; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #0099FF
+}
+
+input.underLine { BORDER-RIGHT: 0px; 
+                  BORDER-TOP: 0px; 
+                  FONT-SIZE: 9pt; 
+                  BACKGROUND: none transparent scroll repeat 0% 0%; 
+                  BORDER-LEFT: 0px; 
+                  COLOR: BLACK; 
+                  BORDER-BOTTOM: #000000 1px solid}
+                  
+tr.tableHead {
+		background-color : #006600;
+		font-size : 11pt;
+		font-family : "ËÎÌו";
+                color: #FFFFFF
+	}
+
+tr.tLine1{
+		background-color :  #eeeeee;
+		font-size : 9pt;
+	}
+tr.tLine2{
+		background-color : #D7D7D7;
+		font-size : 9pt;
+	}
+	
+tr.tLine3{
+		background-color : #EAFFDC;
+		font-size : 9pt;
+	}
+	
+input,textarea {font:9pt ËÎÌו}
+
+.size-9-black {
+	COLOR: #000000; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+.size-9-yellow {
+	COLOR: #ff6633; FONT-SIZE: 9pt; LINE-HEIGHT: 14pt; TEXT-DECORATION: none
+}
+.size-11-black {
+	COLOR: #000000; FONT-SIZE: 11pt; LINE-HEIGHT: 14pt; TEXT-DECORATION: none
+}
+
+.tdbg1 {  background-color: #66CC33}
+.tdbg2 {  background-color: #006600}
+.tdbg3 {  background-color: #006600}
+
+.bluebutton {
+	BACKGROUND-COLOR: #d6dee7; BORDER-BOTTOM: #2b4786 1px solid; BORDER-LEFT: #e6f1fd 1px solid; 
+	BORDER-RIGHT: #2b4786 1px solid; BORDER-TOP: #e6f1fd 1px solid; 
+	COLOR: #003366; FONT-SIZE: 9pt; HEIGHT: 20px;cursor:hand
+}
+
+.iframTitle{
+	font-family : "ËÎÌו";
+	font-size : 16px;
+        font-weight: bold; color: #960028
+}
+
+.input_grey {
+  color: #999999
+}
+
+.input_readonly {
+	FONT-SIZE: 12px; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #f0f0f0
+}

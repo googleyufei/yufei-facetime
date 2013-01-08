@@ -1,0 +1,153 @@
+body{ scrollbar-base-color: #F8F8F8; scrollbar-arrow-color: #6E99F3; font-size: 12px; 
+
+ }
+TD {
+	FONT-SIZE: 9pt; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+INPUT {
+	FONT-SIZE: 9pt; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+.smalf {
+	FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+.smalf2 {
+	FONT-SIZE: 8px; COLOR: #cccccc; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #006666; TEXT-DECORATION: none
+}
+.changecor1{
+	BACKGROUND-COLOR: 7FA0C2;
+}
+.smalfbg {
+	FONT-SIZE: 8pt; COLOR: #ffffff; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"; BACKGROUND-COLOR: #adadad
+}
+.nbg {
+	BACKGROUND-COLOR: #404040
+}
+.shadow {
+	FILTER: DropShadow(Color=#999999, OffX=2, OffY=2, Positive=1); LINE-HEIGHT: 14pt
+}
+.tables {
+	BORDER-RIGHT: 1px dotted; BORDER-TOP: 1px dotted; BORDER-LEFT: 1px dotted; BORDER-BOTTOM: 1px dotted
+}
+.smalfbg2 {
+	FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"; BACKGROUND-COLOR: #ff9900
+}
+.bt {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px
+}
+.cts {
+	FONT-WEIGHT: bold; COLOR: #006699; BACKGROUND-COLOR: #e4e4e4
+}
+.ubb_quote {
+	BORDER-RIGHT: black 0px solid; BORDER-TOP: #999999 1px solid; BORDER-LEFT: #999999 1px solid; COLOR: #666666; BORDER-BOTTOM: black 0px solid; BACKGROUND-COLOR: #f3f3f3
+}
+.ubb_code {
+	BORDER-RIGHT: black 0px dotted; BORDER-TOP: #999999 1px dotted; BORDER-LEFT: #999999 1px dotted; COLOR: #666666; BORDER-BOTTOM: black 0px dotted; BACKGROUND-COLOR: #f3f3f3
+}
+.ubb_move {
+	
+}
+.ubb_fly {
+	
+}
+nbg {
+	BACKGROUND-COLOR: #b4b4b4
+}
+.hd {
+	CURSOR: hand
+}
+.tea {
+	FONT-SIZE: 8pt; COLOR: #999999; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"; BACKGROUND-COLOR: #ffffff
+}
+.rd {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 9pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+.dt {
+	BORDER-RIGHT: #666666 1px solid; BORDER-TOP: #666666 1px solid; FILTER: Alpha(Opacity=50, FinishOpacity=100, Style=1, StartX=0, StartY=0, FinishX=0, FinishY=0)?, StartX=2, StartY=0, FinishX=0, FinishY=0); BORDER-LEFT: #666666 1px solid; BORDER-BOTTOM: #666666 1px solid
+}
+.bgg {
+	BACKGROUND-COLOR: #999999
+}
+.nnbbgg {
+	BACKGROUND-COLOR: #006699
+}
+.bdl {
+	BORDER-RIGHT: #999999 1px dashed; BORDER-TOP: #999999 1px dashed; BORDER-LEFT: #999999 1px dashed; BORDER-BOTTOM: #999999 1px dashed
+}
+.lf {
+	MARGIN-TOP: 4px; FONT-WEIGHT: bolder; FONT-SIZE: 16px; COLOR: #003300; MARGIN-RIGHT: 4px; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"; BACKGROUND-COLOR: #f9f9f9
+}
+
+.oracletdone{
+	background-color: #fffffd;
+}
+.oracletdtwo{
+	BACKGROUND-COLOR: #F0F0F0;
+}
+
+.trClass0{
+	background-color: #fffffd;
+}
+.trClass1{
+	BACKGROUND-COLOR: #EBEBEB;
+}
+.trMouseOver{
+	BACKGROUND-COLOR: #ccccff;
+}
+.oracolumncenterheader {
+	BACKGROUND-COLOR: #CCCCCC;
+	color: #494949;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: bold;
+	text-align: center;
+}
+.orarowheader {
+	background-color: White;
+	color: #336699;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: bold;
+	border-bottom-color: #336699;
+	border-bottom-style: inset;
+	border-bottom-width: 3px;
+	border-collapse: separate;
+}
+.orarowhead
+{
+font-size:12px; color: #00016A; text-align : left; font-weight : bold;  height:20;
+font-family: "Arial, Helvetica, sans-serif";
+}
+.nav_outline {
+ BORDER-RIGHT: #CCCCCC 1px solid; BORDER-TOP: #CCCCCC 1px solid;
+ BORDER-LEFT: #CCCCCC 1px solid; BORDER-BOTTOM: #CCCCCC 1px solid;
+  BACKGROUND-COLOR: #ffffff
+}
+input.nav_input { 
+                   BORDER-RIGHT: 0px;
+                   BORDER-TOP: 0px; 
+                   BORDER-LEFT: 0px; 
+                   BORDER-BOTTOM: #000000 1px solid
+                   FONT-SIZE: 9pt; 
+                   BACKGROUND: none transparent scroll repeat 0% 0%;
+                   WIDTH:30px;
+                   HEIGHT: 16px; 
+                   LINE-HEIGHT: normal
+}   
+.tablebg{
+	background: #000066;
+}
+input.underLine { BORDER-RIGHT: 0px; 
+                  BORDER-TOP: 0px; 
+                  FONT-SIZE: 9pt; 
+                  BACKGROUND: none transparent scroll repeat 0% 0%; 
+                  BORDER-LEFT: 0px; 
+                  COLOR: BLACK; 
+                  BORDER-BOTTOM: #000000 1px solid}

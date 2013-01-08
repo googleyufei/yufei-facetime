@@ -1,0 +1,93 @@
+A:visited {
+	COLOR: #474747; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #00409f; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #00409f; TEXT-DECORATION: underline
+}
+A:link {
+	COLOR: #474747; TEXT-DECORATION: none
+}
+.a_white:visited {
+	COLOR: White; TEXT-DECORATION: none
+}
+.a_white:active {
+	COLOR: White; TEXT-DECORATION: none
+}
+.a_white:hover {
+	COLOR: Black; TEXT-DECORATION: underline
+}
+.a_white:link {
+	COLOR: White; TEXT-DECORATION: none
+}
+BODY {
+	SCROLLBAR-FACE-COLOR: #f6f6f6; FONT-SIZE: 9pt; MARGIN: 0px; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #cccccc; COLOR: #474747; SCROLLBAR-3DLIGHT-COLOR: #cccccc; SCROLLBAR-ARROW-COLOR: #330000; SCROLLBAR-TRACK-COLOR: #f6f6f6; SCROLLBAR-DARKSHADOW-COLOR: #ffffff; BACKGROUND-COLOR: #FFFFFF; TEXT-DECORATION: none
+}
+TD {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体
+}
+BUTTON {
+	FONT-SIZE: 9pt; HEIGHT: 18px
+}
+SELECT {
+	FONT-SIZE: 9pt; HEIGHT: 18px
+}
+.border {
+	BORDER-TOP: #999999 1px solid; BACKGROUND: url(Skin/01/border.gif); BORDER-BOTTOM: #999999 1px solid
+}
+.font1 {
+	FONT-SIZE: 9pt; COLOR: #474747; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+.font2 {
+	FONT-SIZE: 9pt; COLOR: #ffffff; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+.img1 {
+	FILTER: alpha(opacity=20,finishopacity=100,style=1,startx=0,starty=0,finishx=80,finishy=100)
+}
+.mp {
+	LINE-HEIGHT: 130%
+}
+.unnamed1 {
+	LINE-HEIGHT: 20px
+}
+.lb_lan {
+	BORDER-RIGHT: #e7e7e7 1px solid; BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+.lb_lan1 {
+	BORDER-RIGHT: #0095f3 1px solid; BORDER-TOP: #0095f3 1px solid; BORDER-LEFT: #0095f3 1px solid; BORDER-BOTTOM-STYLE: none
+}
+.lb_lan2 {
+	BORDER-RIGHT: #0095f3 1px solid; BORDER-TOP: #0095f3 1px solid; BORDER-LEFT: #0095f3 1px solid; BORDER-BOTTOM: #0095f3 1px solid
+}
+.unnamed2 {
+	LINE-HEIGHT: 22px
+}
+.unnamed4 {
+	LINE-HEIGHT: 25px
+}
+.unnamed3 {
+	TEXT-DECORATION: underline overline
+}
+.lb_lu {
+	BORDER-RIGHT: #96dc74 1px solid; BORDER-TOP: #96dc74 1px solid; BORDER-LEFT: #96dc74 1px solid; BORDER-BOTTOM: #96dc74 1px solid
+}
+.glow {
+	FONT-SIZE: 9pt; FILTER: DropShadow(OffX=1, OffY=1, DropShadow(OffX=1, OffY=1, color:#ffffff); COLOR: #ffffff; FONT-FAMILY: "宋体"
+}
+.lb_zi {
+	BORDER-RIGHT: #6289ff 1px solid; BORDER-TOP: #6289ff 1px solid; BORDER-LEFT: #6289ff 1px solid; BORDER-BOTTOM: #6289ff 1px solid
+}
+.ll {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; BORDER-LEFT: #999999 1px solid; BORDER-BOTTOM: #999999 1px solid
+}
+.zm {
+	FONT-SIZE: 14px; LINE-HEIGHT: 22px
+}
+.gao20 {
+	LINE-HEIGHT: 20px
+}
+.zi {
+	FONT-SIZE: 15px; COLOR: #000066; LINE-HEIGHT: 200%
+}

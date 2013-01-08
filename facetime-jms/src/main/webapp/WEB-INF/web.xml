@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name>facetime-communication</display-name>
+
+	<!-- amq config  -->
+	<context-param>
+		<param-name>org.apache.activemq.brokerURL</param-name>
+		<!--local 55 67 -->
+		<param-value>failover:(tcp://127.0.0.1:61616)</param-value>
+		<!-- gz -->
+		<!-- <param-value>failover:(tcp://203.88.210.236:61618)</param-value> -->
+		<description>The URL of the Message Broker to connect to</description>
+	</context-param>
+	<context-param>
+		<param-name>org.apache.activemq.embeddedBroker</param-name>
+		<param-value>false</param-value>
+		<description>Whether we should include an embedded broker or not</description>
+	</context-param>
+	
+	<!-- session listener -->
+	<listener>
+		<listener-class>com.facetime.communication.activemq.SessionListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>session</filter-name>
+		<filter-class>com.facetime.communication.activemq.SessionFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>session</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>Continuation</filter-name>
+		<filter-class>org.eclipse.jetty.continuation.ContinuationFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Continuation</filter-name>
+		<url-pattern>/amq/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>jettyGzipFilter</filter-name>
+		<filter-class>org.eclipse.jetty.servlets.GzipFilter</filter-class>
+		<init-param>
+			<param-name>mimeTypes</param-name>
+			<param-value>text/javascript,application/x-javascript,text/html,text/css,image/gif,image/png</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>jettyGzipFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>AjaxServlet</servlet-name>
+		<servlet-class>com.facetime.communication.activemq.AjaxServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AjaxServlet</servlet-name>
+		<url-pattern>/amq/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>StatisticsServlet</servlet-name>
+		<description>check connection and subscribe information</description>
+		<servlet-class>com.facetime.communication.activemq.StatisticsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StatisticsServlet</servlet-name>
+		<url-pattern>/StatisticsServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>PropFileServlet</servlet-name>
+		<display-name>PropFileServlet</display-name>
+		<description></description>
+		<servlet-class>com.facetime.communication.servlet.PropFileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PropFileServlet</servlet-name>
+		<url-pattern>/bundle/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SendMessageServlet</servlet-name>
+		<display-name>SendMessageServlet</display-name>
+		<description>send message</description>
+		<servlet-class>com.facetime.communication.servlet.SendMessageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SendMessageServlet</servlet-name>
+		<url-pattern>/sendmessage</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>cloud/server/list.do</welcome-file>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp </url-pattern>
+			<page-encoding>UTF-8</page-encoding>
+			<el-ignored>false</el-ignored>
+		</jsp-property-group>
+	</jsp-config>
+</web-app>

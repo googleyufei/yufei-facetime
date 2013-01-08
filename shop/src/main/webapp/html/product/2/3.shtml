@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/shop/css/global/header01.css" rel="stylesheet" type="text/css"/>
+<link href="/shop/css/product/product.css" rel="stylesheet" type="text/css"/>
+<link href="/shop/css/global/topcommend.css" rel="stylesheet" type="text/css"/>
+<script language="javascript"src="/shop/js/FoshanRen.js"></script>
+<script language="javascript" src="/shop/js/xmlhttp.js"></script>
+<title>bread3-巴巴运动网</title>
+<meta name="Keywords" content="bread3" />
+<script language="javascript">
+function getTopSell(typeid){
+	var salespromotion = document.getElementById('commenddetail');		
+	if(salespromotion && typeid!=""){
+		salespromotion.innerHTML= "数据正在加载...";
+		send_request(function(value){salespromotion.innerHTML=value},
+				 "/shop/product/switch/topsell.do?typeid="+ typeid, true);
+	}
+}
+function getViewHistory(){
+	var viewHistoryUI = document.getElementById('historyaccess');		
+	if(viewHistoryUI){
+		viewHistoryUI.innerHTML= "数据正在加载...";
+		send_request(function(value){viewHistoryUI.innerHTML=value},
+				 "/shop/product/switch/getViewHistory.do", true);
+	}
+}
+function pageInit(){
+	getTopSell("2");
+	getViewHistory();
+}
+</script>
+</head>
+<body onload="pageInit()">
+#include virtual="/WEB-INF/page/share/Head.jsp" 
+<div id="ContentBody"><!-- 页面主体 -->
+	 	 <div id="position"> 您现在的位置：<a href="/" name="linkHome">巴巴运动网</a> <span id="uc_cat_spnPath"> &gt;&gt; <a href='/product/list.do?typeid=2'>apple_sub</a> &gt;&gt; <em>bread3</em></span></div>
+ <div class="browse_left"><!-- 页面主体 左边 --> 
+        <!-- 浏览过的商品 -->
+	 <div class="browse">
+	      <div class="browse_t">您浏览过的商品</div>
+	      <ul><div id="historyaccess"></div></ul>
+	 </div>
+	<!--精品推荐 start -->
+	<div id="topcommend" align="left">
+	       <div id="newtop"><img height=13 src="/shop/images/global/sy2.gif" width=192/></DIV>
+	       <div id="newlist">
+		  <div id="newmore">
+		    <div class="title">精品推荐</div>
+		  </div>
+			<span id="commenddetail">
+			</span>
+		</div>
+	</div>
+</div><!-- 页面主体 左边end -->
+	
+ <div id="Right" ><!-- 页面主体 右边 -->
+<form action="/shop/shopping/cart.do" method="post" name="cart">
+<input type="hidden" name="productid" value="3" />
+<div id="browse_left">
+ 
+							<div class="right_left">
+								<div id="main_image"  style="cursor:hand;background:url(/shop/images/product/2/3/140x/05c4fcea-4307-4c6d-8c7a-66dc5faed31f.jpg) center center no-repeat"><img src="/shop/images/global/product_blank.gif" WIDTH="200" HEIGHT="240"/></div>
+								<img src="/shop/images/global/zoom+.gif" style="cursor:hand;"/>
+							</div>
+							
+							<div class="right_right">									
+									<div class="right_title"><b>bread3</b></div>
+									<div class="right_desc">
+											<ul>
+												<li class="li2">商品编号：3<font color="#CC0000">（电话订购专用）</font></li>
+												 <li>品牌：apple</li> 																																		</ul>
+									</div>
+									<div class="right_desc">
+																						<input type="hidden" name="styleid" value="3" />
+											<li>颜色：红色</li>
+																				</div>
+									<ul>
+										<li>市场价：<s>89.0</s> 元 <font color='#ff6f02'>本站价：<b>47.0 元</b></font> 节省：<font color='#ff6f02'>42.0</font> 元										</li>
+									  	<li class="right_img"><input type="image" src="/shop/images/global/sale.gif"/></li>
+																				<li class="guopiprice">
+										[ <img src="/shop/images/global/2j4.gif" border="0"/>&nbsp;<a href="http://www.babasport.com/cache/news/6/9.shtml" target="_blank">配送说明</a> ]&nbsp;&nbsp;&nbsp;&nbsp;[ <img src="/shop/images/global/2j4.gif" border="0"/>&nbsp;<a href="http://www.babasport.com/cache/news/4/24.shtml" target="_blank">付款方式</a> ]
+										</li>
+									</ul>									
+							</div>
+</div>
+   		<div id="browse_right"><div id="sy_biankuang">
+										<div class="sy_xinpintuijian_font">本站尚未开张</div>
+										<div class="sy_dianhua" style="line-height:150%"><font color="#FF0000">
+											全国：010-6466 3070</font><br/>MSN在线客服：babasport@sohu.com<br/>	
+										<font color="#3A8FAF">QQ在线客服：523429525</font></div>
+						</div></div>
+</form>
+<div class='right_blank'></div><div class='right_title1'>商品说明</div><div class='right_content'>2011.06.26</div>
+ 
+ </div><!-- 页面主体 右边 end -->
+</div><!-- 页面主体 end -->
+ <!--#include virtual="/WEB-INF/page/share/Foot.jsp" -->
+ #include virtual="/WEB-INF/page/share/Foot.jsp"
+</body>
+</html>
